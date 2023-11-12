@@ -5,7 +5,7 @@
 
 To play with it have a look at
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/792f24bb-caf9-4a6b-98c1-9fcff4261772/deploy-status)](https://app.netlify.com/sites/zstack-pattern-maker/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/792f24bb-caf9-4a6b-98c1-9fcff4261772/deploy-status)](https://zstack-pattern-maker.netlify.app)
 
 
 ![ZStack-Pattern-Maker, exmple of usage](ZStack_PatternMaker.png)
