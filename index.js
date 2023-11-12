@@ -42,10 +42,10 @@ function handleControlPanelClick(e) {
 
 	switch (targetId) {
 		case 'style-Btn':
-			handleAlignment();
+			handleAlignment(e);
 			break;
 		case 'mirror-Btn':
-			handleMirrorType();
+			handleMirrorType(e);
 			break;
 	}
 }
@@ -55,13 +55,13 @@ function handleControlPanelInput(e) {
 
 	switch (targetId) {
 		case 'hueRange':
-			handleHueRange();
+			handleHueRange(e);
 			break;
 		case 'numColsInput':
-			handleNumColsInput(); // currently max 15
+			handleNumColsInput(e); // currently max 15
 			break;
 		case 'numRowsInput':
-			handleNumRowsInput(); // currently max 15
+			handleNumRowsInput(e); // currently max 15
 			break;
 	}
 }
