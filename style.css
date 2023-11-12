@@ -44,7 +44,7 @@ z-stack {
 
 z-stack * {
 	border: 1px solid #0000007c;
-	box-shadow: var(--shadow);
+	/* box-shadow: var(--shadow); */
 }
 
 /* Define styles for individual z-stack elements */
