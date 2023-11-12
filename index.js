@@ -37,7 +37,7 @@ const controlPanel = document.getElementById('control-panel');
 controlPanel.addEventListener('click', handleControlPanelClick);
 controlPanel.addEventListener('input', handleControlPanelInput);
 
-function handleControlPanelClick() {
+function handleControlPanelClick(e) {
 	const targetId = e.target.id;
 
 	switch (targetId) {
@@ -50,7 +50,7 @@ function handleControlPanelClick() {
 	}
 }
 
-function handleControlPanelInput() {
+function handleControlPanelInput(e) {
 	const targetId = e.target.id;
 
 	switch (targetId) {

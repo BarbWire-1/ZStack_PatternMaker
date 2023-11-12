@@ -14,7 +14,7 @@ export function eventHandlers(element) {
 
 	// EVENTHANDLER FUNCTIONS
 	// cycles through styleKeys (for alignment) of the el
-    function handleAlignment() {
+    function handleAlignment(e) {
 
         styleIndex = (styleIndex + 1) % alignments.length;
 		const alignment = alignments[styleIndex];
@@ -25,27 +25,27 @@ export function eventHandlers(element) {
 	}
 
 	// cycles through mirroring types
-    function handleMirrorType() {
+    function handleMirrorType(e) {
 
 		mirrorIndex = (mirrorIndex + 1) % 5;
         const mirrorType = MIRRORTYPES[ mirrorIndex ];
 
 		element.mirrorType = mirrorType;
-		element.mirrorTiles();
+		element.mirrorTiles(e);
 		e.target.innerHTML = `mirror: "${mirrorType}"`;
 	}
 
 	// changes number of columns and replaces the grid with new grid
-	function handleNumColsInput() {
+	function handleNumColsInput(e) {
 		element.numCols = +e.target.value;
 	}
 	// changes number of rows and replaces the grid with new grid
-	function handleNumRowsInput() {
+	function handleNumRowsInput(e) {
 		element.numRows = +e.target.value;
     }
     // TODO add more possible filters in a dropdown and switch in here? Or in input?
     // applies the recieved value for a hue-rotate filter
-	function handleHueRange() {
+	function handleHueRange(e) {
 		const hueValue = e.target.value;
 		element.container.style.filter = `hue-rotate(${hueValue}deg)`;
 	}
