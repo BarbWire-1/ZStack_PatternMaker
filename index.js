@@ -13,11 +13,11 @@ const elements = `
 
 const zStackGrid = new ZStackGrid({
 	parentId: 'container',
-	numRows: 6, // optional - default 6
-	numCols: 6, // optional - default 6
-	alignment: 'bottom-right', // optional - default 'default'
-	mirrorType: 'both', // optional - default 'both'
-	content: elements, // optional - default ""
+	numRows: 6,
+	numCols: 6,
+	alignment: 'bottom-right',
+	mirrorType: 'both',
+	content: elements,
 });
 
 //zStackGrid.addInnerHTML(append-any-other-elements);
@@ -42,10 +42,10 @@ function handleControlPanelClick(e) {
 
 	switch (targetId) {
 		case 'style-Btn':
-			handleAlignment();
+			handleAlignment(e);
 			break;
 		case 'mirror-Btn':
-			handleMirrorType();
+			handleMirrorType(e);
 			break;
 	}
 }
@@ -58,10 +58,10 @@ function handleControlPanelInput(e) {
 			handleHueRange();
 			break;
 		case 'numColsInput':
-			handleNumColsInput(); // currently max 15
+			handleNumColsInput(e); // currently max 15
 			break;
 		case 'numRowsInput':
-			handleNumRowsInput(); // currently max 15
+			handleNumRowsInput(e); // currently max 15
 			break;
 	}
 }
