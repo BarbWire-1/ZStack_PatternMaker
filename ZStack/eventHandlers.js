@@ -56,4 +56,4 @@ export function eventHandlers(element) {
 		handleNumRowsInput,
 		handleHueRange,
 	};
-}
+};
