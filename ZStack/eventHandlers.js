@@ -46,7 +46,7 @@ export function eventHandlers(element) {
     // TODO add more possible filters in a dropdown and switch in here? Or in input?
     // applies the recieved value for a hue-rotate filter
 	function handleHueRange(e) {
-		const hueValue = e.target.value;
+		const hueValue = +e.target.value;
 		element.container.style.filter = `hue-rotate(${hueValue}deg)`;
 	}
 	return {
