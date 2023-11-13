@@ -1,5 +1,16 @@
-import { ALIGNMENTS, MIRRORTYPES } from '../index.js';
+import { ALIGNMENTS} from '../index.js';
 //TODO - extend zStack?? - hmm...
+/**
+ * A class to create a grid in a parentElement.
+ * Each cell of the grid includes a z-stack element with the given innerHTML (content)
+ * number of rows, number of columns, content, alignment of each elelment
+ * inside the z-stacks and mirroring of the z-stacks to patterns are settable from JS
+ *
+ * The z-stacks' childelements are slotted, but can be styled in global
+ * Currently ALL transforms set in CSS would be overwritten by the alignment-settings
+ */
+
+
 export class ZStackGrid {
     #mirrorType;
     #alignment;
@@ -143,7 +154,7 @@ export class ZStackGrid {
         return this.#content;
     }
     set content(newValue) {
-        
+
         this.#content = newValue;
         [ ...this.container.children ].forEach((child) =>
             child.innerHTML = newValue
