@@ -12,11 +12,11 @@ const elements = `
 `;
 
 const zStackGrid = new ZStackGrid({
-	parentId: 'container',
-	numRows: 6,
-	numCols: 6,
-	alignment: 'bottom-right',
-	mirrorType: 'both',
+	parentId: 'container', // required
+	numRows: 6, // optional - default 6
+	numCols: 6, // optional - default 6
+	alignment: 'bottom-right', // optional - default 'default' (same as 'center')
+	mirrorType: 'both', // optional - default 'none'
 	content: elements,
 });
 

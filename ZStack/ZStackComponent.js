@@ -18,7 +18,7 @@ export class ZStack extends HTMLElement {
 	constructor() {
 		super();
 		this.attachShadow({ mode: 'open' });
-		this.#alignment = this.getAttribute('alignment') || 'default'; // get the alignment set in HTML/JS
+		this.#alignment = 'default'; // get the alignment set in HTML/JS
 		this.#styles = Object.freeze(STYLES);
 		this.#updateAlignment();
     }
