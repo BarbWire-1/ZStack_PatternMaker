@@ -102,8 +102,10 @@ export class ZStackGrid {
 	get mirrorType() {
 		return this.#mirrorType;
 	}
-	set mirrorType(newValue) {
-		this.#mirrorType = newValue;
+    set mirrorType(newValue) {
+       
+        this.#mirrorType = newValue;
+        this.mirrorTiles();
 	}
 
 	get alignment() {
