@@ -50,7 +50,7 @@ export class ZStackGrid {
 	 *
 	 * @param {*} string HTML templateString with elements to append
 	 */
-	addInnerHTML(string) {
+	addStacksContent(string) {
 		[...this.container.children].forEach((child) =>
 			child.appendChildren(string)
 		);
@@ -58,30 +58,45 @@ export class ZStackGrid {
 
 	mirrorTiles() {
 		[...this.container.children].forEach((stack, i) => {
-			const mirror = this.mirrorType;
+			const mirror = this.#mirrorType;
+
+			//if (mirror === 'none' || !MIRRORTYPES.includes(mirror)) return;
 			stack.style.transform = ''; // reset the transform
-
-			if (mirror === 'none' || !MIRRORTYPES.includes(mirror)) return;
-
-			// if any mirroring...
-			let flip = '';
-			const cols = this.#numCols;
-
-			if (this.mirrorType === 'each') {
-				if (i % 2 === 1) flip += 'scale(-1, -1)';
-			}
-
-			// Mirror horizontally for every odd row;
-			else if (mirror === 'horizontal' || mirror === 'both') {
-				if (i % (2 * cols) > cols - 1) flip += 'scaleY(-1)';
-			}
-
-			// Mirror vertically for odd indices
-			if (mirror === 'vertical' || mirror === 'both') {
-				if (i % 2 === 1) flip += 'scaleX(-1)';
-			}
+			const flip = this.#getFlipTransformation(i);
 			stack.style.transform += flip;
 		});
+	}
+
+	#getFlipTransformation(index) {
+		const mirror = this.#mirrorType;
+		let flip = '';
+
+		const cols = this.#numCols;
+		const groups = {
+			eachSecond: index % 2 === 1,
+			secondRow: index % (2 * cols) > cols - 1,
+		};
+
+        if (mirror === 'each') {
+
+            if (groups.eachSecond) flip += 'scale(-1, -1)';
+
+        } else {
+
+            if ((mirror === 'horizontal' || mirror === 'both')
+                && groups.secondRow)
+            {
+				flip += 'scaleY(-1)';
+			}
+
+            if ((mirror === 'vertical' || mirror === 'both')
+                && groups.eachSecond
+			) {
+				flip += 'scaleX(-1)';
+			}
+		}
+
+		return flip;
 	}
 
 	get mirrorType() {

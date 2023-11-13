@@ -20,7 +20,7 @@ const zStackGrid = new ZStackGrid({
 	content: elements,
 });
 
-// zStackGrid.addInnerHTML(elements); // add any more eles into each stack
+ //zStackGrid.addStacksContent(elements); // add any more eles into each stack
 
 // -------------------------------------------------------------------------------------TESTING
 // Event Delegation
