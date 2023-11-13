@@ -13,8 +13,8 @@ const elements = `
 
 const zStackGrid = new ZStackGrid({
 	parentId: 'container', // required
-	numRows: 6, // optional - default 6
-	numCols: 6, // optional - default 6
+	rows: 6, // optional - default 6
+	columns: 6, // optional - default 6
 	alignment: 'bottom-right', // optional - default 'default' (same as 'center')
 	mirrorType: 'both', // optional - default 'none'
 	content: elements,

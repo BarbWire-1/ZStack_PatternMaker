@@ -10,16 +10,16 @@ export class ZStackGrid {
 	constructor(options) {
 		const {
 			parentId,
-			numRows = 6,
-			numCols = 6,
+			rows = 6,
+			columns = 6,
 			alignment = 'default',
 			mirrorType = 'none',
 			content = '',
 		} = options;
 
 		this.container = document.getElementById(parentId);
-		this.#numRows = numRows;
-		this.#numCols = numCols;
+		this.#numRows = rows;
+		this.#numCols = columns;
 		this.#alignment = alignment;
 		//console.log(alignment);
 		this.#mirrorType = mirrorType;
@@ -35,7 +35,7 @@ export class ZStackGrid {
 			this.#numCols
 		}, 1fr)`;
 
-		for (let i = 0; i < this.numRows; i++) {
+		for (let i = 0; i < this.#numRows; i++) {
 			for (let j = 0; j < this.#numCols; j++) {
 				const stack = document.createElement('z-stack');
 				stack.setAttribute('id', `zStack_${i}_${j}`);
@@ -105,19 +105,19 @@ export class ZStackGrid {
 		return Object.keys(this.#styles);
 	}
 
-	get numCols() {
+	get columns() {
 		return this.#numCols;
 	}
-	set numCols(newValue) {
+	set columns(newValue) {
 		this.#numCols = newValue;
 		this.container.innerHTML = '';
 		this.#createGrid();
 	}
 
-	get numRows() {
+	get rows() {
 		return this.#numRows;
 	}
-	set numRows(newValue) {
+	set rows(newValue) {
 		this.#numRows = newValue;
 		this.container.innerHTML = '';
 		this.#createGrid();

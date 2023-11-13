@@ -32,12 +32,12 @@ export function createEventCallbacks(ele) {
 
   // updates and replaces grid with new grid
   function updateNumCols(e) {
-    ele.numCols = +e.target.value;
+    ele.columns = +e.target.value;
   }
 
   // updates and replaces grid with new grid
   function updateNumRows(e) {
-    ele.numRows = +e.target.value;
+    ele.rows = +e.target.value;
   }
 
   // TODO add more possible filters in a dropdown and switch in here? Or in input?
