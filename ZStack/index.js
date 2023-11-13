@@ -1,5 +1,5 @@
-export { createEventHandlers } from './eventHandlers.js';
-export { STYLES } from './STYLES.js';
-export { MIRRORTYPES } from './MIRRORTYPES.js';
+export { createEventHandlers } from './EVENTS/createEventHandlers.js';
+export { STYLES } from './CONSTANTS/STYLES.js';
+export { MIRRORTYPES } from './CONSTANTS/MIRRORTYPES.js';
 export { ZStack } from './ZStackComponent.js';
-export { ZStackGrid } from './ZStackGrid.js';
+export { ZStackGrid } from './PATTERNS/ZStackGrid.js';

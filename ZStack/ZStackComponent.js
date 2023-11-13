@@ -10,7 +10,7 @@
  * The z-index can be changed in global CSS
  */
 
-import { STYLES } from './STYLES.js';
+import { STYLES } from './CONSTANTS/STYLES.js';
 
 export class ZStack extends HTMLElement {
 	#styles;
@@ -21,7 +21,7 @@ export class ZStack extends HTMLElement {
 		this.#alignment = 'default'; // get the alignment set in HTML/JS
 		this.#styles = Object.freeze(STYLES);
 		this.#updateAlignment();
-    }
+	}
 
 	/* as this would not work with dot-notation, I stick with a getter/setter */
 
@@ -74,8 +74,7 @@ export class ZStack extends HTMLElement {
 		return this.#alignment;
 	}
 
-    set alignment(value) {
-
+	set alignment(value) {
 		if (!(value in this.#styles)) {
 			console.warn(
 				'Please choose a valid alignment style!\nHave a look at the keys in the alignmentStyles property'
