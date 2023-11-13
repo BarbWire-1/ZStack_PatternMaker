@@ -73,24 +73,24 @@ export class ZStackGrid {
 
 		const cols = this.#numCols;
 		const groups = {
-			eachSecond: index % 2 === 1,
-			secondRow: index % (2 * cols) > cols - 1,
+			oddStacks: index % 2 === 1,
+			oddRows: index % (2 * cols) > cols - 1,
 		};
 
-        if (mirror === 'each') {
+        if (mirror === 'each' && groups.oddStacks) {
 
-            if (groups.eachSecond) flip += 'scale(-1, -1)';
+           flip += 'scale(-1, -1)';
 
         } else {
 
             if ((mirror === 'horizontal' || mirror === 'both')
-                && groups.secondRow)
+                && groups.oddRows)
             {
 				flip += 'scaleY(-1)';
 			}
 
             if ((mirror === 'vertical' || mirror === 'both')
-                && groups.eachSecond
+                && groups.oddStacks
 			) {
 				flip += 'scaleX(-1)';
 			}
