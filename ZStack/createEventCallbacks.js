@@ -1,11 +1,11 @@
 // TODO adjust class: extract common behaviour and import it instead of adding as method?
 import { MIRRORTYPES } from './index.js';
 /**
- *
+ * Factory function to provide the different eventCallbacks
  * @param {*} element the element to apply the eventHandling to
  * @returns an object of all eventHandler functions
  */
-export function eventCallbacks(element) {
+export function createEventCallbacks(element) {
 	const alignments = element.styleKeys;
 	// Indices for cycling
 	let mirrorIndex = 0;

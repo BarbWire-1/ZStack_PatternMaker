@@ -1,18 +1,22 @@
 
-import { eventCallbacks } from "./eventCallbacks.js";
+import { createEventCallbacks } from "./createEventCallbacks.js";
 
 
-
-export function eventHandlers(element) {
+/**
+ * Factory funcion to provide the supported eventHandlers
+ * @param {*} element The element the handlers are applied to
+ * @returns handler Functions:  onClick, onInput
+ */
+export function createEventHandlers(element) {
 const {
 	handleAlignment,
 	handleMirrorType,
 	handleHueRange,
 	handleNumColsInput,
 	handleNumRowsInput,
-} = eventCallbacks(element);
+} = createEventCallbacks(element);
 
-    function handleClick(e) {
+    function onClick(e) {
         const targetClass = e.target.classList;
 
         switch (true) {
@@ -25,7 +29,7 @@ const {
         }
     }
 
-    function handleInput(e) {
+    function onInput(e) {
         const targetClass = e.target.classList;
 
         switch (true) {
@@ -40,5 +44,5 @@ const {
                 break;
         }
     }
-    return { handleClick, handleInput}
+    return { onClick, onInput}
 }

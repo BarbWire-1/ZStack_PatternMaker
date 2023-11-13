@@ -1,4 +1,4 @@
-import { ZStackGrid, eventHandlers } from './ZStack/index.js';
+import { ZStackGrid, createEventHandlers } from './ZStack/index.js';
 
 // USAGE - INIT
 // the HTMLelements to appent into the components slot as template string
@@ -24,12 +24,12 @@ const zStackGrid = new ZStackGrid({
 
 // -------------------------------------------------------------------------------------TESTING
 // Event Delegation
-const {
-    handleClick,
-    handleInput
-} = eventHandlers(zStackGrid);
-
+const { onClick, onInput } = createEventHandlers(zStackGrid);
 
 const controlPanel = document.getElementById('control-panel');
-controlPanel.addEventListener('click', handleClick);
-controlPanel.addEventListener('input', handleInput);
+controlPanel.addEventListener('click', onClick);
+controlPanel.addEventListener('input', onInput);
+
+// testing to include svg
+// const nonRootSvg = document.querySelectorAll('svg :not(svg)');
+// console.log(nonRootSvg)
