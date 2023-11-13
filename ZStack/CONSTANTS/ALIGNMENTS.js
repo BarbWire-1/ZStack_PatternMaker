@@ -1,4 +1,4 @@
-export const STYLES = {
+export const ALIGNMENTS = {
     center: {
         top: "50%",
         left: "50%",

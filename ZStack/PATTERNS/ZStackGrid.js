@@ -1,4 +1,4 @@
-import { STYLES, MIRRORTYPES } from '../index.js';
+import { ALIGNMENTS, MIRRORTYPES } from '../index.js';
 //TODO - extend zStack?? - hmm...
 export class ZStackGrid {
 	#mirrorType;
@@ -23,7 +23,7 @@ export class ZStackGrid {
 		this.#alignment = alignment;
 		//console.log(alignment);
 		this.#mirrorType = mirrorType;
-		this.#styles = STYLES;
+		this.#styles = ALIGNMENTS;
 		this.content = content;
 		this.#createGrid(); // init
 	}

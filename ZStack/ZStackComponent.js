@@ -10,7 +10,7 @@
  * The z-index can be changed in global CSS
  */
 
-import { STYLES } from './CONSTANTS/STYLES.js';
+import { ALIGNMENTS } from './CONSTANTS/ALIGNMENTS.js';
 
 export class ZStack extends HTMLElement {
 	#styles;
@@ -19,7 +19,7 @@ export class ZStack extends HTMLElement {
 		super();
 		this.attachShadow({ mode: 'open' });
 		this.#alignment = 'default'; // get the alignment set in HTML/JS
-		this.#styles = Object.freeze(STYLES);
+		this.#styles = Object.freeze(ALIGNMENTS);
 		this.#updateAlignment();
 	}
 

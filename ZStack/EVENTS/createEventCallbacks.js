@@ -2,11 +2,11 @@
 import { MIRRORTYPES } from "../index.js";
 /**
  * Factory function to provide the different eventCallbacks
- * @param {*} element the element to apply the eventHandling to
+ * @param {*} ele the element to apply the eventHandling to
  * @returns an object of all eventHandler functions
  */
-export function createEventCallbacks(element) {
-  const alignments = element.styleKeys;
+export function createEventCallbacks(ele) {
+  const alignments = ele.styleKeys;
 
   // Indices for cycling
   let mirrorIndex = 0;
@@ -16,8 +16,8 @@ export function createEventCallbacks(element) {
     styleIndex = (styleIndex + 1) % alignments.length;
     const alignment = alignments[styleIndex];
 
-    element.alignment = alignment; // set new alignment
-    element.mirrorTiles(); // re-apply current mirroring
+    ele.alignment = alignment; // set new alignment
+    ele.mirrorTiles(); // re-apply current mirroring
     e.target.innerText = `alignment: "${alignment}"`;
   }
 
@@ -25,25 +25,25 @@ export function createEventCallbacks(element) {
     mirrorIndex = (mirrorIndex + 1) % 5;
     const mirrorType = MIRRORTYPES[mirrorIndex];
 
-    element.mirrorType = mirrorType;
-    element.mirrorTiles();
+    ele.mirrorType = mirrorType;
+    ele.mirrorTiles();
     e.target.innerHTML = `mirror: "${mirrorType}"`;
   }
 
   // updates and replaces grid with new grid
   function updateNumCols(e) {
-    element.numCols = +e.target.value;
+    ele.numCols = +e.target.value;
   }
 
   // updates and replaces grid with new grid
   function updateNumRows(e) {
-    element.numRows = +e.target.value;
+    ele.numRows = +e.target.value;
   }
 
   // TODO add more possible filters in a dropdown and switch in here? Or in input?
   function updateHueRange(e) {
     const hueValue = e.target.value;
-    element.container.style.filter = `hue-rotate(${hueValue}deg)`;
+    ele.container.style.filter = `hue-rotate(${hueValue}deg)`;
   }
 
   return {
