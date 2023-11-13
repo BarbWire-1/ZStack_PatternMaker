@@ -41,11 +41,11 @@ export class ZStackGrid {
                 const stack = document.createElement("z-stack");
                 stack.setAttribute('id', `zStack_${i}_${j}`);
                 stack.alignment = this.#alignment;
+                stack.innerHTML = this.content;
                 this.container.appendChild(stack);
                 this.mirrorTiles();
             }
         }
-        this.addInnerHTML(this.content)
     }
     /**
      *
@@ -118,7 +118,7 @@ export class ZStackGrid {
         this.container.innerHTML = "";
         this.#createGrid()
     }
-    
+
     get numRows() {
         return this.#numRows;
     }

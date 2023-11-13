@@ -1,56 +1,44 @@
-// TODO adjust class: extract common behaviour and import it instead of adding as method?
-import { MIRRORTYPES } from './index.js';
-/**
- *
- * @param {*} element the element to apply the eventHandling to
- * @returns an object of all eventHandler functions
- */
+
+import { eventCallbacks } from "./eventCallbacks.js";
+
+
+
 export function eventHandlers(element) {
-	const alignments = element.styleKeys;
-	// Indices for cycling
-	let mirrorIndex = 0;
-	let styleIndex = 0;
+const {
+	handleAlignment,
+	handleMirrorType,
+	handleHueRange,
+	handleNumColsInput,
+	handleNumRowsInput,
+} = eventCallbacks(element);
 
-	// EVENTHANDLER FUNCTIONS
-	// cycles through styleKeys (for alignment) of the el
-	function handleAlignment(e) {
-		styleIndex = (styleIndex + 1) % alignments.length;
-		const alignment = alignments[styleIndex];
+    function handleClick(e) {
+        const targetClass = e.target.classList;
 
-		element.alignment = alignment; // set new alignment
-		element.mirrorTiles(); // re-apply current mirroring
-		e.target.innerText = `alignment: "${alignment}"`;
-	}
+        switch (true) {
+            case targetClass.contains('style-btn'):
+                handleAlignment(e);
+                break;
+            case targetClass.contains('mirror-btn'):
+                handleMirrorType(e);
+                break;
+        }
+    }
 
-	// cycles through mirroring types
-	function handleMirrorType(e) {
-		mirrorIndex = (mirrorIndex + 1) % 5;
-		const mirrorType = MIRRORTYPES[mirrorIndex];
+    function handleInput(e) {
+        const targetClass = e.target.classList;
 
-		element.mirrorType = mirrorType;
-		element.mirrorTiles();
-		e.target.innerHTML = `mirror: "${mirrorType}"`;
-	}
-
-	// changes number of columns and replaces the grid with new grid
-	function handleNumColsInput(e) {
-		element.numCols = +e.target.value;
-	}
-	// changes number of rows and replaces the grid with new grid
-	function handleNumRowsInput(e) {
-		element.numRows = +e.target.value;
-	}
-	// TODO add more possible filters in a dropdown and switch in here? Or in input?
-	// applies the recieved value for a hue-rotate filter
-	function handleHueRange(e) {
-		const hueValue = e.target.value;
-		element.container.style.filter = `hue-rotate(${hueValue}deg)`;
-	}
-	return {
-		handleAlignment,
-		handleMirrorType,
-		handleNumColsInput,
-		handleNumRowsInput,
-		handleHueRange,
-	};
+        switch (true) {
+            case targetClass.contains('hue-range'):
+                handleHueRange(e);
+                break;
+            case targetClass.contains('num-cols-input'):
+                handleNumColsInput(e); // currently max 15
+                break;
+            case targetClass.contains('num-rows-input'):
+                handleNumRowsInput(e); // currently max 15
+                break;
+        }
+    }
+    return { handleClick, handleInput}
 }
