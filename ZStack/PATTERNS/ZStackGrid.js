@@ -55,7 +55,7 @@ export class ZStackGrid {
 		prototype.style.setProperty('alignment', this.#alignment);
 		prototype.innerHTML = this.#content;
 
-        // Create a DocumentFragment to hold the cloned elements
+        // Create a documentFragment to hold the cloned elements
         // (reduce re-rendering)
 		const fragment = document.createDocumentFragment();
 
@@ -80,8 +80,6 @@ export class ZStackGrid {
 				}
 
 				fragment.appendChild(stack);
-
-				// Debugging: Output alignment during cloning
 				//console.log(`Alignment for ${stack.id}: ${stack.alignment}`);
 			}
 		}
@@ -184,6 +182,5 @@ export class ZStackGrid {
 		[...this.container.children].forEach(
 			(child) => (child.innerHTML = newValue)
 		);
-		//this.#createGrid();
 	}
 }
