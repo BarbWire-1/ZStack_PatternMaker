@@ -33,6 +33,6 @@ controlPanel.addEventListener('input', onInput);
 // testing to include svg
 // const nonRootSvg = document.querySelectorAll('svg :not(svg)');
 // console.log(nonRootSvg)
-//zStackGrid.alignment = 'center';// ok
+// zStackGrid.alignment = 'bottom-right';// ok
 //zStackGrid.mirrorType = 'both';// ok
 //zStackGrid.content = `<div class="square one"></div>`// ok

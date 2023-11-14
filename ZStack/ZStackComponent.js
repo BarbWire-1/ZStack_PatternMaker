@@ -25,7 +25,7 @@ export class ZStack extends HTMLElement {
 
 	/* as this would not work with dot-notation, I stick with a getter/setter */
 
-	/*
+    /* now use this as needed to create a prototype and clone it for patterns */
     static get observedAttributes() {
         return ["alignment"];
     }
@@ -36,7 +36,7 @@ export class ZStack extends HTMLElement {
             this.#updateAlignment();
         }
     }
-    */
+
 
 	connectedCallback() {
 		const shadow = this.shadowRoot;
@@ -45,8 +45,7 @@ export class ZStack extends HTMLElement {
 
 		//console.log(alignmentStyles);
 
-		shadow.innerHTML = `
-        <style>
+		shadow.innerHTML = `<style>
             :host {
                 display: flex;
                 align-items: center;
