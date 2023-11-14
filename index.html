@@ -1,49 +1,32 @@
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>ZStack-Pattern-Maker</title>
-		<link rel="stylesheet" href="style.css" />
-	</head>
-    
-	<body>
-		<div id="container">
-			<!-- Create and append clones dynamically -->
-		</div>
 
-		<div id="control-panel">
-			<button class="style-btn"
-				>Click through the alignment-settings</button
-			>
-			<button class="mirror-btn">Click through the mirror-types</button>
-			<label for="hueRange"
-				>Move <span style="color: orange">me</span> to animate
-				colors.</label
-			>
-			<input id="hueRange" type="range" class="hue-range" min="0" max="360" value="0" />
-			<div class="num-input-container">
-				<label style="font-size: 0.8em" for="numColsInput">Columns</label>
-				<input
-                    id="numColsInput"
-					type="number"
-					class="num-cols-input"
-					min="1"
-					max="15"
-					value="6"
-				/>
-				<label for="numRowsInput" style="font-size: 0.8em">Rows</label>
-				<input
-                    id="numRowsInput"
-					type="number"
-					class="num-rows-input"
-					min="1"
-					max="15"
-					value="6"
-				/>
-			</div>
-		</div>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ZStack-Pattern-Maker</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
 
-		<script src="main.js" type="module"></script>
-	</body>
+<body>
+    <div id="container">
+        <!-- Create and append clones dynamically -->
+    </div>
+
+    <div id="control-panel">
+        <button class="style-btn">Click through the alignment-settings</button>
+        <button class="mirror-btn">Click through the mirror-types</button>
+        <label for="hueRange">Move <span style="color: orange">me</span> to animate colors.</label>
+        <input id="hueRange" type="range" class="hue-range" min="0" max="360" value="0" />
+        <div class="num-input-container">
+            <label style="font-size: 0.8em" for="numColsInput">Columns</label>
+            <input id="numColsInput" type="number" class="num-cols-input" min="1" max="15" value="6" />
+            <label for="numRowsInput" style="font-size: 0.8em">Rows</label>
+            <input id="numRowsInput" type="number" class="num-rows-input" min="1" max="15" value="6" />
+        </div>
+    </div>
+
+    <script src="main.js" type="module"></script>
+</body>
+
 </html>
