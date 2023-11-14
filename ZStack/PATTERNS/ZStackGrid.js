@@ -63,13 +63,11 @@ export class ZStackGrid {
         // aplly individual transform for mirroring
 		for (let i = 0; i < this.#numRows; i++) {
 			for (let j = 0; j < this.#numCols; j++) {
-                const stack = prototype.cloneNode(true);
+				const stack = prototype.cloneNode(true);
 
-                const flip = this.#getFlipTransformation(stack);
-				stack.style.transform += flip;// aplly the current mirroring on stack
 				stack.setAttribute('id', `zStack_${i}_${j}`);
 
-                // add classes for later use to mirror the stacks
+				// add classes for later use to mirror the stacks
 				if (j % 2 === 1) {
 					stack.classList.add('second-stack');
 				}
@@ -78,6 +76,10 @@ export class ZStackGrid {
 				if (i % 2 === 1) {
 					stack.classList.add('second-row');
 				}
+
+				// get and apply the current mirroring on stack
+				const flip = this.#getFlipTransformation(stack);
+                stack.style.transform += flip;
 
 				fragment.appendChild(stack);
 				//console.log(`Alignment for ${stack.id}: ${stack.alignment}`);
