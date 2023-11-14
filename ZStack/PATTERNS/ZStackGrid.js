@@ -17,7 +17,7 @@ export class ZStackGrid {
 	#numCols;
 	#numRows;
 	#content;
-	#prototype;
+
 
 	constructor(options) {
 		const {
