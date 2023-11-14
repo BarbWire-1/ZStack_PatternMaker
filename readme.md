@@ -12,6 +12,33 @@ To play with the idea click the button to an example on netlify:
 [![Netlify Status](https://api.netlify.com/api/v1/badges/792f24bb-caf9-4a6b-98c1-9fcff4261772/deploy-status)](https://zstack-pattern-maker.netlify.app)
 
 
+
+The example below was initialised like:
+
+```js
+const elements = `
+    <div class="square one"></div>
+    <div class="square two"></div>
+    <div class="square three"></div>
+    <div class="square four"></div>
+    <div class="square five"></div>
+    <div class="square six"></div>
+`;
+
+const zStackGrid = new ZStackGrid({
+
+	parentId: 'container', // required
+	rows: 6, // optional - default 6
+	columns: 6, // optional - default 6
+	alignment: 'bottom-right', // optional - default 'default' (same as 'center')
+	mirrorType: 'both', // optional - default 'none'
+	content: elements, // optional -default ''
+});
+```
+
+... and the elements tweaked in CSS
+
+***
 ![ZStack-Pattern-Maker, example of usage](/ZStack/ZStack_PatternMaker.png)
 
 
