@@ -3,7 +3,7 @@
 based on the reuse of a z-stack web-component
 (vanilla JS, CSS, HTML)
 
-For more details have a look at the [documentation](/documentation.txt)
+For more details have a look at the [DOCUMENTATION](/documentation.txt)
 
 ***
 
