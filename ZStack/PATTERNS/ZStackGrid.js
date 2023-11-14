@@ -48,8 +48,9 @@ export class ZStackGrid {
 			this.#numCols
 		}, 1fr)`;
 
-		// Create a prototype
-		const prototype = document.createElement('z-stack');
+		// Create a prototype and set its properties
+        const prototype = document.createElement('z-stack');
+
 		prototype.alignment = this.#alignment;
 		prototype.style.setProperty('alignment', this.#alignment);
 		prototype.innerHTML = this.#content;
@@ -57,20 +58,36 @@ export class ZStackGrid {
 		// Create a DocumentFragment to hold the cloned elements
 		const fragment = document.createDocumentFragment();
 
+        // loop over rows/columns to create clones,
+        // aplly individual transform for mirroring
 		for (let i = 0; i < this.#numRows; i++) {
 			for (let j = 0; j < this.#numCols; j++) {
-				const stack = prototype.cloneNode(true);
+                const stack = prototype.cloneNode(true);
+
+                const flip = this.#getFlipTransformation(stack);
+				stack.style.transform += flip;// aplly the current mirroring on stack
 				stack.setAttribute('id', `zStack_${i}_${j}`);
+
+                // add classes for later use to mirror the stacks
+				if (j % 2 === 1) {
+					stack.classList.add('second-stack');
+				}
+
+				// each second row
+				if (i % 2 === 1) {
+					stack.classList.add('second-row');
+				}
+
 				fragment.appendChild(stack);
 
-
-				// console.log(`Alignment for ${stack.id}: ${stack.alignment}`);
+				// Debugging: Output alignment during cloning
+				//console.log(`Alignment for ${stack.id}: ${stack.alignment}`);
 			}
 		}
 
 		// Append the fragment to the container
 		this.container.appendChild(fragment);
-		this.mirrorTiles();
+
 	}
 
 	/**
@@ -84,39 +101,33 @@ export class ZStackGrid {
 	}
 
 	mirrorTiles() {
-		[...this.container.children].forEach((stack, i) => {
-			//const mirror = this.#mirrorType;
-
-			//if (mirror === 'none' || !MIRRORTYPES.includes(mirror)) return;
+		[...this.container.children].forEach((stack) => {
 			stack.style.transform = ''; // reset the transform
-			const flip = this.#getFlipTransformation(i);
+			const flip = this.#getFlipTransformation(stack);
 			stack.style.transform += flip;
 		});
 	}
 
-	#getFlipTransformation(index) {
+	#getFlipTransformation(stack) {
 		const mirror = this.#mirrorType;
 		let flip = '';
 
-		const cols = this.#numCols;
-		const groups = {
-			oddStacks: index % 2 === 1,
-			oddRows: index % (2 * cols) > cols - 1,
-		};
+		const isOddStack = stack.classList.contains('second-stack');
+		const isOddRow = stack.classList.contains('second-row');
 
-		if (mirror === 'each' && groups.oddStacks) {
+		if (mirror === 'each' && isOddStack) {
 			flip += 'scale(-1, -1)';
 		} else {
 			if (
 				(mirror === 'horizontal' || mirror === 'both') &&
-				groups.oddRows
+				isOddRow
 			) {
 				flip += 'scaleY(-1)';
 			}
 
 			if (
 				(mirror === 'vertical' || mirror === 'both') &&
-				groups.oddStacks
+				isOddStack
 			) {
 				flip += 'scaleX(-1)';
 			}
