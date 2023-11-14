@@ -17,16 +17,14 @@ export function createEventCallbacks(ele) {
 		const alignment = alignments[styleIndex];
 
 		ele.alignment = alignment; // set new alignment
-		ele.mirrorTiles(); // re-apply current mirroring
 		e.target.innerText = `alignment: "${alignment}"`;
 	}
 
 	function cycleMirrorType(e) {
 		mirrorIndex = (mirrorIndex + 1) % 5;
-		const mirrorType = MIRRORTYPES[mirrorIndex];
+        const mirrorType = MIRRORTYPES[ mirrorIndex ];
 
-		ele.mirrorType = mirrorType;
-		ele.mirrorTiles();
+        ele.mirrorType = mirrorType;
 		e.target.innerHTML = `mirror: "${mirrorType}"`;
 	}
 

@@ -1,14 +1,18 @@
 
-## Full info will follow...
+## A simple Pattern-Creator...
+based on the reuse of a z-stack web-component
+(vanilla JS, CSS, HTML)
+
+For more details have a look at the [documentation](/documentation.txt)
 
 ***
 
-To play with it have a look at
+To play with the idea click the button to an example on netlify:
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/792f24bb-caf9-4a6b-98c1-9fcff4261772/deploy-status)](https://zstack-pattern-maker.netlify.app)
 
 
-![ZStack-Pattern-Maker, exmple of usage](/ZStack/ZStack_PatternMaker.png)
+![ZStack-Pattern-Maker, example of usage](/ZStack/ZStack_PatternMaker.png)
 
 
 <details>
