@@ -44,9 +44,7 @@ export class ZStackGrid {
 	#createGrid() {
 		// Set grid-styling for nums/rows on the container
 		this.container.style.gridTemplateRows = `repeat(${this.#numRows}, 1fr)`;
-		this.container.style.gridTemplateColumns = `repeat(${
-			this.#numCols
-		}, 1fr)`;
+		this.container.style.gridTemplateColumns = `repeat(${this.#numCols}, 1fr)`;
 
 		// Create a prototype and set its properties
         const prototype = document.createElement('z-stack');
