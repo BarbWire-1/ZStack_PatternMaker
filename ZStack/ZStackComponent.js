@@ -120,13 +120,13 @@ export class ZStack extends HTMLElement {
 		}
 	}
 
-	/**
-	 *
-	 * @param {*} string HTML templateString with elements to append
-	 */
-	appendChildren(string) {
-		this.innerHTML += string;
-	}
+	// /**
+	//  *
+	//  * @param {*} string HTML templateString with elements to append
+	//  */
+    // addContent(string) {
+    //     this.innerHTML += string;
+    // }
 }
 
 customElements.define('z-stack', ZStack);

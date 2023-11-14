@@ -20,7 +20,7 @@ const zStackGrid = new ZStackGrid({
 	content: elements,
 });
 
- //zStackGrid.addStacksContent(elements); // add any more eles into each stack
+
 
 // -------------------------------------------------------------------------------------TESTING
 // Event Delegation
@@ -36,3 +36,4 @@ controlPanel.addEventListener('input', onInput);
 // zStackGrid.alignment = 'bottom-right';// ok
 //zStackGrid.mirrorType = 'both';// ok
 //zStackGrid.content = `<div class="square one"></div>`// ok
+//zStackGrid.addContent(`<div class="square one"></div>`);// ok

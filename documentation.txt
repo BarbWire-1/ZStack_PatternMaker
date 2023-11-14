@@ -1,0 +1,100 @@
+The ZStack - PatternMaker is a little project to create different patterns by handling alignment and mirroring.
+
+
+WEB COMPONENT
+
+The core-element is a web-component:  <z-stack></z-stack>
+This is a component with an empty slot which takes any individual HTML content.
+It can be placed into HTMl or created and appended as any HTML-element.
+
+The content gets passed as a template string
+like element.innerHTML = `
+    <div class="square one"></div>
+    <div class="square two"></div>
+    <div class="square three"></div>
+    <div class="square four"></div>
+    <div class="square five"></div>
+    <div class="square six"></div>
+`; eG.
+
+The only purpose and property of the component is a custom-property "alignment".
+all content inside the component gets stacked and the same alignment gets applied to each direct child of the z-stack element.
+
+There are 10 different possible values:
+
+'center'
+'top-left'
+'top-center'
+'top-right'
+'center-right'
+'bottom-right'
+'bottom-center'
+'bottom-left'
+'center-left'
+'default' ('center')
+
+All these settings get applied by creating and passing a cssText including top, left, transform: translate - values.
+Therefore settings from css would be overwritten!
+
+All other style-settings are settable wherever wanted. Preferably in CSS on classes.
+I now set a dimension-variable in CSS where the proportions of all elements inside the z-stacks relate to,
+but that's not required.
+
+
+
+PATTERNS
+
+Multiple z-stack elements can be easily combined to create patterns.
+Inside the patterns there are more methods integrated to also being able to mirror the z-stacks.
+
+Z-STACK-GRID
+
+This creates a grid of z-stack-tiles.
+Initialisation:
+
+const elements = `
+    <div class="square one"></div>
+    <div class="square two"></div>
+    <div class="square three"></div>
+    <div class="square four"></div>
+    <div class="square five"></div>
+    <div class="square six"></div>
+`;
+
+const zStackGrid = new ZStackGrid({
+
+	parentId: 'container', // required
+	rows: 6, // optional - default 6
+	columns: 6, // optional - default 6
+	alignment: 'bottom-right', // optional - default 'default' (same as 'center')
+	mirrorType: 'both', // optional - default 'none'
+	content: elements, // optional -default ''
+});
+
+The options are also exposed to change them dynamically.
+
+<alignment> - see the possible settings on the z-stack.
+
+<mirrorType> can be:
+'none'
+'horizontal' - flips each second row on y
+'vertical' - flips each second z-stack on x
+'both' - applies the both above flipping combined.
+'each' - flips each second zstack x,y
+
+setting the content would replace the entire innerHTML of each zstack in the grid
+
+methods:
+addContent(string) - appends new elements to the existing innerHTML
+
+On creating the grid a prototype gets created, the looping over rows/columns clones of this protypes get created.
+They recieve classes for odd-stack and/or odd-row, which then gets used for mirroring the stack.
+
+The clones get appended to a documentFragment which after the loop has finished gets appended to the parent-container.
+
+Setting rows or columns currently replaces the entire grid,
+setting or adding content only replaces the innerHTML of the z-stack-elements.
+
+I created a grid example to play a bit with the possibilities, cycling through alignment, mirrorType, changing rows, columns and varying the colors by appling the css hueRange filter.
+
+A next example would be a kaleidoscope...

@@ -18,7 +18,6 @@ export class ZStackGrid {
 	#numRows;
 	#content;
 
-
 	constructor(options) {
 		const {
 			parentId,
@@ -44,21 +43,23 @@ export class ZStackGrid {
 	#createGrid() {
 		// Set grid-styling for nums/rows on the container
 		this.container.style.gridTemplateRows = `repeat(${this.#numRows}, 1fr)`;
-		this.container.style.gridTemplateColumns = `repeat(${this.#numCols}, 1fr)`;
+		this.container.style.gridTemplateColumns = `repeat(${
+			this.#numCols
+		}, 1fr)`;
 
 		// Create a prototype and set its properties
-        const prototype = document.createElement('z-stack');
+		const prototype = document.createElement('z-stack');
 
 		prototype.alignment = this.#alignment;
 		prototype.style.setProperty('alignment', this.#alignment);
 		prototype.innerHTML = this.#content;
 
-        // Create a documentFragment to hold the cloned elements
-        // (reduce re-rendering)
+		// Create a documentFragment to hold the cloned elements
+		// (reduce re-rendering)
 		const fragment = document.createDocumentFragment();
 
-        // loop over rows/columns to create clones,
-        // aplly individual transform for mirroring
+		// loop over rows/columns to create clones,
+		// aplly individual transform for mirroring
 		for (let i = 0; i < this.#numRows; i++) {
 			for (let j = 0; j < this.#numCols; j++) {
 				const stack = prototype.cloneNode(true);
@@ -77,7 +78,7 @@ export class ZStackGrid {
 
 				// get and apply the current mirroring on stack
 				const flip = this.#getFlipTransformation(stack);
-                stack.style.transform += flip;
+				stack.style.transform += flip;
 
 				fragment.appendChild(stack);
 				//console.log(`Alignment for ${stack.id}: ${stack.alignment}`);
@@ -86,20 +87,9 @@ export class ZStackGrid {
 
 		// append fragment
 		this.container.appendChild(fragment);
-
 	}
-
-	/**
-	 *
-	 * @param {*} string HTML templateString with elements to append
-	 */
-	addStacksContent(string) {
-		[...this.container.children].forEach((child) =>
-			child.appendChildren(string)
-		);
-	}
-
-	mirrorTiles() {
+    // METHODS
+	#mirrorTiles() {
 		[...this.container.children].forEach((stack) => {
 			stack.style.transform = ''; // reset the transform
 			const flip = this.#getFlipTransformation(stack);
@@ -117,17 +107,11 @@ export class ZStackGrid {
 		if (mirror === 'each' && isOddStack) {
 			flip += 'scale(-1, -1)';
 		} else {
-			if (
-				(mirror === 'horizontal' || mirror === 'both') &&
-				isOddRow
-			) {
+			if ((mirror === 'horizontal' || mirror === 'both') && isOddRow) {
 				flip += 'scaleY(-1)';
 			}
 
-			if (
-				(mirror === 'vertical' || mirror === 'both') &&
-				isOddStack
-			) {
+			if ((mirror === 'vertical' || mirror === 'both') && isOddStack) {
 				flip += 'scaleX(-1)';
 			}
 		}
@@ -135,12 +119,20 @@ export class ZStackGrid {
 		return flip;
 	}
 
+	addContent(string) {
+		this.#content += string;
+		[...this.container.children].forEach(
+			(child) => (child.innerHTML += string)
+		);
+	}
+
+    // GETTERS/SETTERS
 	get mirrorType() {
 		return this.#mirrorType;
 	}
 	set mirrorType(newValue) {
 		this.#mirrorType = newValue;
-		this.mirrorTiles();
+		this.#mirrorTiles();
 	}
 
 	get alignment() {
