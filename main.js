@@ -32,8 +32,8 @@ window.onload = e => {
     controlPanel.addEventListener('click', onClick);
     controlPanel.addEventListener('input', onInput);
 
-    document.getElementById('numColsInput').value = zStackGrid.columns;
-     document.getElementById('numRowsInput').value = zStackGrid.rows;
+    controlPanel.querySelector('#numColsInput').value = zStackGrid.columns;
+    controlPanel.querySelector('#numRowsInput').value = zStackGrid.rows;
 
     // testing to include svg
     // const nonRootSvg = document.querySelectorAll('svg :not(svg)');
