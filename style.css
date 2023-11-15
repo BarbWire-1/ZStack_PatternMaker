@@ -14,7 +14,7 @@ body {
 }
 :root {
 	/* this is the one measure to change for adjusting all, as all dimensions are set relative */
-	--dimension: min(6vw, 100px);
+	--dimension: max(6vw, 80px);
 	--color1: #f008;
 	--color2: #0f08;
 	--color3: #00f8;
